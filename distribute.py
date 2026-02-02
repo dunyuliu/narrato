@@ -120,6 +120,9 @@ LOG_FILE="$HOME/.narrato_launch.log"
     NARRATO_DIR="$(pwd)"
     echo "Narrato dir: $NARRATO_DIR"
 
+    # Add bundled bin folder (ffmpeg) to PATH
+    export PATH="$NARRATO_DIR/bin:$PATH"
+
     # Verify we're in the right place
     if [ ! -f "gui_launcher.py" ]; then
         echo "Error: gui_launcher.py not found"
@@ -153,7 +156,7 @@ LOG_FILE="$HOME/.narrato_launch.log"
         "CFBundleInfoDictionaryVersion": "6.0",
         "CFBundleName": "Narrato",
         "CFBundlePackageType": "APPL",
-        "CFBundleShortVersionString": "0.0.2",
+        "CFBundleShortVersionString": "0.0.3",
         "CFBundleVersion": "1",
         "LSMinimumSystemVersion": "10.14",
         "NSHighResolutionCapable": True,
@@ -189,7 +192,7 @@ def create_dmg_layout(temp_staging, dmg_staging, version, narrato_staging):
 # Narrato Installation Script
 
 echo "======================================"
-echo "Narrato v0.0.2 Installation"
+echo "Narrato v0.0.3 Installation"
 echo "======================================"
 echo ""
 
@@ -219,7 +222,7 @@ echo ""
     # Create a nicely formatted README for the DMG
     readme_path = dmg_staging / "README.txt"
     readme_path.write_text("""╔════════════════════════════════════════════════════════════╗
-║  NARRATO v0.0.2 - Document to Speech Converter              ║
+║  NARRATO v0.0.3 - Document to Speech Converter              ║
 ║  🎙️  Convert .docx and .pdf files to high-quality audio    ║
 ╚════════════════════════════════════════════════════════════╝
 
@@ -299,7 +302,7 @@ def main():
     narrato_staging = dmg_staging / "Narrato"
 
     # Version
-    version = "0.0.2"
+    version = "0.0.3"
     dmg_name = f"Narrato-v{version}.dmg"
     dmg_path = dist_dir / dmg_name
 
@@ -331,6 +334,18 @@ def main():
     print("  Copying source code and venv...", end=" ", flush=True)
     copy_tree(str(project_root), str(narrato_staging), exclude_func=should_exclude)
     print("✓")
+
+    # Bundle ffmpeg
+    print("  Bundling ffmpeg...", end=" ", flush=True)
+    bin_dir = narrato_staging / "bin"
+    bin_dir.mkdir(exist_ok=True)
+    ffmpeg_src = shutil.which("ffmpeg")
+    if ffmpeg_src:
+        shutil.copy2(ffmpeg_src, bin_dir / "ffmpeg")
+        (bin_dir / "ffmpeg").chmod(0o755)
+        print("✓")
+    else:
+        print("✗ (ffmpeg not found, users will need to install it)")
 
     # Create DMG layout
     print("  Creating DMG layout...", end=" ", flush=True)
@@ -367,7 +382,7 @@ def main():
     print("  • INSTALL.command - Terminal installation helper")
     print()
     print("User Experience:")
-    print("1. Double-click Narrato-v0.0.2.dmg to mount")
+    print("1. Double-click Narrato-v0.0.3.dmg to mount")
     print("2. Double-click Narrato.app to launch the GUI immediately")
     print("   OR drag 'Narrato' folder to Applications for CLI use")
     print()

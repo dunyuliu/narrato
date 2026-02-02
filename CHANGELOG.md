@@ -2,6 +2,11 @@
 
 All notable changes to Narrato will be documented in this file.
 
+## [0.0.3] - 2025-02-01
+
+### Added
+- Bundle ffmpeg in DMG for self-contained distribution
+
 ## [0.0.2] - 2025-02-01
 
 ### Fixed
