@@ -23,7 +23,7 @@ class NarratoGUI:
     def __init__(self, root):
         """Initialize the GUI."""
         self.root = root
-        self.root.title("Narrato v0.0.1 - Document to Speech Converter")
+        self.root.title("Narrato v0.0.2 - Document to Speech Converter")
         self.root.geometry("700x600")
         self.root.resizable(True, True)
 
@@ -37,7 +37,7 @@ class NarratoGUI:
         # Title
         title_label = tk.Label(
             self.root,
-            text="Narrato v0.0.1 - Document to Speech",
+            text="Narrato v0.0.2 - Document to Speech",
             font=("Arial", 22, "bold"),
             fg="black",
             pady=10,

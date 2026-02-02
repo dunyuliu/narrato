@@ -153,7 +153,7 @@ LOG_FILE="$HOME/.narrato_launch.log"
         "CFBundleInfoDictionaryVersion": "6.0",
         "CFBundleName": "Narrato",
         "CFBundlePackageType": "APPL",
-        "CFBundleShortVersionString": "0.0.1",
+        "CFBundleShortVersionString": "0.0.2",
         "CFBundleVersion": "1",
         "LSMinimumSystemVersion": "10.14",
         "NSHighResolutionCapable": True,
@@ -189,7 +189,7 @@ def create_dmg_layout(temp_staging, dmg_staging, version, narrato_staging):
 # Narrato Installation Script
 
 echo "======================================"
-echo "Narrato v0.0.1 Installation"
+echo "Narrato v0.0.2 Installation"
 echo "======================================"
 echo ""
 
@@ -219,7 +219,7 @@ echo ""
     # Create a nicely formatted README for the DMG
     readme_path = dmg_staging / "README.txt"
     readme_path.write_text("""╔════════════════════════════════════════════════════════════╗
-║  NARRATO v0.0.1 - Document to Speech Converter              ║
+║  NARRATO v0.0.2 - Document to Speech Converter              ║
 ║  🎙️  Convert .docx and .pdf files to high-quality audio    ║
 ╚════════════════════════════════════════════════════════════╝
 
@@ -299,7 +299,7 @@ def main():
     narrato_staging = dmg_staging / "Narrato"
 
     # Version
-    version = "0.0.1"
+    version = "0.0.2"
     dmg_name = f"Narrato-v{version}.dmg"
     dmg_path = dist_dir / dmg_name
 
@@ -367,7 +367,7 @@ def main():
     print("  • INSTALL.command - Terminal installation helper")
     print()
     print("User Experience:")
-    print("1. Double-click Narrato-v0.0.1.dmg to mount")
+    print("1. Double-click Narrato-v0.0.2.dmg to mount")
     print("2. Double-click Narrato.app to launch the GUI immediately")
     print("   OR drag 'Narrato' folder to Applications for CLI use")
     print()

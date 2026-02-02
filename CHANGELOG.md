@@ -2,6 +2,16 @@
 
 All notable changes to Narrato will be documented in this file.
 
+## [0.0.2] - 2025-02-01
+
+### Fixed
+- Added missing `scipy` dependency (required for Bark engine)
+- Fixed tkinter support for Python 3.12
+
+### Changed
+- Moved CLAUDE.md to project root
+- Requires Python 3.12 (Python 3.13 not yet compatible with Kokoro dependencies)
+
 ## [0.0.1] - 2025-02-01
 
 ### Added
