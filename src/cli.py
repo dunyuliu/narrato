@@ -92,7 +92,7 @@ def main():
     )
     parser.add_argument(
         "--engine",
-        default="gtts",
+        default="kokoro",
         choices=EngineFactory.list_engines(),
         help=f"TTS engine to use (default: gtts). Available: {', '.join(EngineFactory.list_engines())}",
     )
@@ -115,8 +115,8 @@ def main():
     parser.add_argument(
         "--speed",
         type=float,
-        default=1.2,
-        help="Playback speed multiplier (default: 1.2, i.e., 20%% faster). 1.0=normal, 0.75=slower",
+        default=1.0,
+        help="Playback speed multiplier (default: 1.0). 0.75=slower, 1.5=faster",
     )
     parser.add_argument(
         "--all-speeds",

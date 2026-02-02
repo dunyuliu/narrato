@@ -2,6 +2,13 @@
 
 All notable changes to Narrato will be documented in this file.
 
+## [0.0.4] - 2025-02-01
+
+### Changed
+- Default engine changed to Kokoro (was gTTS)
+- Default speed changed to 1.0x (was 1.2x)
+- Increased Kokoro chunk size to 2000 chars (was 500) to reduce mid-word cuts
+
 ## [0.0.3] - 2025-02-01
 
 ### Added

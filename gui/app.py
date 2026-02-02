@@ -23,7 +23,7 @@ class NarratoGUI:
     def __init__(self, root):
         """Initialize the GUI."""
         self.root = root
-        self.root.title("Narrato v0.0.3 - Document to Speech Converter")
+        self.root.title("Narrato v0.0.4 - Document to Speech Converter")
         self.root.geometry("700x600")
         self.root.resizable(True, True)
 
@@ -37,7 +37,7 @@ class NarratoGUI:
         # Title
         title_label = tk.Label(
             self.root,
-            text="Narrato v0.0.3 - Document to Speech",
+            text="Narrato v0.0.4 - Document to Speech",
             font=("Arial", 22, "bold"),
             fg="black",
             pady=10,
@@ -71,7 +71,7 @@ class NarratoGUI:
         engine_frame.pack(fill=tk.X, pady=5)
 
         tk.Label(engine_frame, text="TTS Engine:", fg="black", font=("Arial", 12)).pack(side=tk.LEFT, padx=5)
-        self.engine_var = tk.StringVar(value="gtts")
+        self.engine_var = tk.StringVar(value="kokoro")
         engine_combo = ttk.Combobox(
             engine_frame,
             textvariable=self.engine_var,
@@ -104,7 +104,7 @@ class NarratoGUI:
         speed_frame.pack(fill=tk.X, pady=5)
 
         tk.Label(speed_frame, text="Speed:", fg="black", font=("Arial", 12)).pack(side=tk.LEFT, padx=5)
-        self.speed_var = tk.StringVar(value="1.2")
+        self.speed_var = tk.StringVar(value="1.0")
         speed_combo = ttk.Combobox(
             speed_frame,
             textvariable=self.speed_var,

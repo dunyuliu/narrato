@@ -38,7 +38,7 @@ class KokoroEngine(TTSEngine):
 
     def get_chunk_size(self) -> int:
         """Return recommended chunk size for this engine."""
-        return 500
+        return 2000
 
     def _ensure_pipeline_loaded(self):
         """Lazy load the Kokoro pipeline."""
