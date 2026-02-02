@@ -1,0 +1,78 @@
+docx2mp3 - Modular TTS Engine Architecture
+==========================================
+
+PROJECT STRUCTURE
+─────────────────
+docx2mp3/
+├── __init__.py              # Package entry point
+├── __main__.py              # CLI launcher
+├── gui_launcher.py          # GUI launcher
+├── README.md                # Main documentation
+├── CLAUDE.md                # Claude preprocessing guide
+├── requirements.txt         # Dependencies
+│
+├── src/                     # Core source code
+│   ├── engine.py            # ⭐ Engine abstraction & factory
+│   ├── tts_client.py        # ⭐ TTS orchestrator (uses engines)
+│   ├── cli.py               # CLI with engine selection
+│   ├── extractor.py         # .docx text extraction
+│   ├── chunker.py           # Text chunking
+│   └── concatenator.py      # MP3 concatenation
+│
+├── engines/                 # ⭐ Pluggable TTS engines
+│   ├── __init__.py
+│   ├── gtts_engine.py       # Google TTS (100+ languages)
+│   └── bark_engine.py       # Bark TTS (local, 10 English voices)
+│
+└── gui/                     # Tkinter GUI
+    ├── __init__.py
+    └── app.py               # GUI with engine/voice selection
+
+
+ENGINE ABSTRACTION
+──────────────────
+All engines inherit from TTSEngine:
+
+  class TTSEngine(ABC):
+      - synthesize(text, voice) → bytes
+      - get_name() → str
+      - get_supported_voices() → List[str]
+
+EngineFactory manages all registered engines:
+  - register(name, engine_class)
+  - get_engine(name)
+  - list_engines()
+
+
+ENGINES
+───────
+1. gTTS (Google Text-to-Speech)
+   - 100+ languages
+   - Fast, online, no setup
+   - Default engine
+
+2. Bark (Local TTS)
+   - English only (10 speakers)
+   - Runs locally, no internet
+   - Privacy-preserving
+   - ~350MB models
+
+
+USAGE
+─────
+CLI:  python -m docx2mp3 file.docx --engine gtts --voice es
+      python -m docx2mp3 file.docx --engine bark --voice en_speaker_0
+
+GUI:  python3 gui_launcher.py
+      (Select engine from dropdown, voices update automatically)
+
+
+EXTENDING
+─────────
+To add a new TTS engine:
+
+1. Create src/engines/myengine.py
+2. Implement TTSEngine interface
+3. Register in src/engine.py:
+   EngineFactory.register("myengine", MyEngine)
+4. Use: python -m docx2mp3 file.docx --engine myengine --voice [voice]

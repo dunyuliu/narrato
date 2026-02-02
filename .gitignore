@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Env
+venv/
+env/
+ENV/
+.env
+
+# Narrato specific
+*.mp3
+bark_generation.wav
+progress_debug.png
+screenshot_debug.png
+status_update.png
+terminal_debug.png
+*_parts/
+docx2mp3_*/
+
+# Dist
+*.dmg
+dist/
+
+# Mac
+.DS_Store
+
+# IDEs
+.idea/
+.vscode/
+
+# Large models
+bark_model/

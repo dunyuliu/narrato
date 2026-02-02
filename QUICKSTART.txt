@@ -1,0 +1,73 @@
+🎙️  NARRATO - Convert Documents to Audio
+==========================================
+
+INSTALLATION (ONE COMMAND)
+──────────────────────────
+bash install.sh
+
+This installs everything in a virtual environment:
+✓ Base dependencies (python-docx, gtts, tqdm, PyPDF2)
+✓ Bark TTS (high-quality local engine)
+
+Manual setup:
+1. python3 -m venv venv
+2. source venv/bin/activate
+3. pip install -r requirements.txt
+4. pip install git+https://github.com/suno-ai/bark.git
+
+QUICK START
+───────────
+CLI:
+  python -m narrato document.docx                    # gTTS (default)
+  python -m narrato document.pdf                     # PDF support
+  python -m narrato file.docx --engine bark          # Bark (high quality)
+  python -m narrato file.docx --voice es             # Spanish
+  python -m narrato file.docx --all-speeds           # 1.0x, 1.2x, 1.5x
+
+GUI:
+  python gui_launcher.py                             # Launch GUI
+
+ENGINES
+───────
+• gTTS (default)
+  - 100+ languages
+  - Fast, online, instant setup
+  - Usage: --engine gtts --voice es
+
+• Gemini (New)
+  - 5 High-quality AI voices (Aoede, Charon, Fenrir, Kore, Puck)
+  - Requires GEMINI_API_KEY environment variable
+  - Usage: --engine gemini --voice Aoede
+
+• Bark (optional)
+  - English only (10 speakers)
+  - Highest quality, runs locally
+  - Usage: --engine bark --voice en_speaker_0
+
+EXAMPLES
+────────
+# Basic
+python -m narrato report.docx
+
+# Spanish with Bark
+python -m narrato report.docx --engine bark --voice en_speaker_3
+
+# All speeds
+python -m narrato book.pdf --all-speeds
+
+# GUI
+python gui_launcher.py
+  → Browse file
+  → Select engine/language
+  → Click Convert
+
+FEATURES
+────────
+✓ Multiple formats: .docx, .pdf
+✓ Pluggable TTS engines (gTTS, Bark)
+✓ 100+ languages with gTTS
+✓ 10 English speakers with Bark
+✓ Speed control (0.75x - 2.0x)
+✓ Concurrent processing
+✓ CLI and GUI
+✓ Auto-output to same folder
